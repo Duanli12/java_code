@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+	<link rel="stylesheet" href="css/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/nouislider.min.css">
+	<link rel="stylesheet" href="css/select2.min.css">
+	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+	<link rel="stylesheet" href="css/ionicons.min.css">
+	<link rel="stylesheet" href="css/main.css">
+
+	<!-- Favicons -->
+	<link rel="icon" type="image/png" href="icon/favicon-32x32.png" sizes="32x32">
+	<link rel="apple-touch-icon" href="icon/favicon-32x32.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="icon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="icon/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="icon/apple-touch-icon-144x144.png">
+
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="Dmitry Volkov">
+	<title>社区居民网上互助银行</title>
+</head>
+
+<body>
+<header class="header">
+	<div class="container">
+		<div class="row">
+			<div class="col-7 col-md-9 col-lg-8 col-xl-9">
+				<div class="header__content">
+					<!-- header menu btn -->
+					<button class="header__btn" type="button">
+						<span></span> <span></span> <span></span>
+					</button>
+					<!-- header nav -->
+					<ul class="header__nav">
+						<!-- dropdown -->
+						<li class="header__nav-item"><a href="frontIndex"
+														class="header__nav-link">网站首页</a></li>
+						<!-- end dropdown -->
+
+						<!-- dropdown -->
+						<li class="header__nav-item"><a
+								class="dropdown-toggle header__nav-link" href="pingtai">平台信息</a>
+						</li>
+						<!-- end dropdown -->
+
+						<!-- dropdown -->
+						<li class="header__nav-item"><a
+								class="dropdown-toggle header__nav-link" href="jianyi">建议意见箱</a>
+						</li>
+						<!-- end dropdown -->
+
+						<!-- dropdown -->
+						<li class="header__nav-item"><a
+								class="dropdown-toggle header__nav-link" href="tongzhi">通知公告</a>
+						</li>
+						<!-- end dropdown -->
+
+						<!-- dropdown -->
+						<li class="header__nav-item"><a
+								class="dropdown-toggle header__nav-link" href="aboutUs">用户操作指南</a>
+						</li>
+						<!-- end dropdown -->
+
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-5 col-md-3 col-lg-4 col-xl-3"></div>
+		</div>
+	</div>
+</header>
+
+<!-- main content -->
+<main class="main main--breadcrumb">
+	<!-- breadcrumb -->
+	<div class="breadcrumb">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<ul class="breadcrumb__wrap">
+						<li class="breadcrumb__item"><a href="/frontIndex">网站首页</a></li>
+						<li class="breadcrumb__item breadcrumb__item--active">个人信息</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb -->
+
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-7 col-lg-8 col-xl-9">
+				<!-- form -->
+				<form action="#" class="form">
+					<div class="row">
+						<div class="col-12">
+							<h2 class="form__title">个人信息</h2>
+						</div>
+
+						<div class="col-12">
+							<div class="form__group">
+								<label for="name" class="form__label">姓名:</label>
+								<input th:value="${session.userInfo.username}" name="name" id="username" type="username" class="form__input" placeholder="姓名">
+							</div>
+						</div>
+
+						<div class="col-12">
+							<div class="form__group">
+								<label for="description" class="form__label">年龄:</label>
+								<input name="age" th:value="${session.userInfo.age}" id="age" class="form__input" placeholder="年龄"/>
+							</div>
+						</div>
+
+						<div class="col-12 col-xl-6">
+							<div class="form__select-wrap">
+								<label for="category" class="form__label">性别:</label>
+								<div class="form__select-wrap">
+									<select name="sex" id="sex" class="form__select">
+										<option value="男" th:selected="${session.userInfo.sex =='男'}">男</option>
+										<option value="女" th:selected="${session.userInfo.sex =='女'}">女</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="form__group">
+								<label for="description" class="form__label">密码:</label>
+								<input th:value="${session.userInfo.password}" name="password" id="password" class="form__input" placeholder="密码"/>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="form__group">
+								<label for="name" class="form__label">头像:</label>
+								<img th:src="${session.userInfo.img}" style="width:200px;height:200px"/>
+							</div>
+							<input name="img" id="imgUrl" hidden/>
+							<div class="layui-form-item">
+								<div class="layui-input-inline ">
+									<button type="button" class="layui-btn" id="upload">
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12">
+							<button class="form__btn" type="button" onclick="sub()"><span>修改</span></button>
+						</div>
+					</div>
+				</form>
+				<!-- end form -->
+			</div>
+
+			<div class="col-12 col-md-5 col-lg-4 col-xl-3">
+				<!-- sidebox -->
+				<div class="sidebox sidebox--desk">
+					<div class="user__head">
+						<div class="user__img">
+							<img th:src="${session.userInfo.img}" alt="">
+						</div>
+					</div>
+					<div class="user__title">
+						<h2 th:text="${session.userInfo.username}">姓名</h2>
+					</div>
+					<ul class="user__stats">
+						<li>
+							<p>年龄</p> <span th:text="${session.userInfo.age}">26</span>
+						</li>
+						<li>
+							<p>性别</p> <span th:text="${session.userInfo.sex}">男</span>
+						</li>
+					</ul>
+					<ul class="user__stats">
+						<li style="margin-left:25%">
+							<p>账户余额</p> <span th:text="${session.userInfo.money}">26</span>
+						</li>
+					</ul>
+					<a href="#" th:onclick="getName1([[${session.userInfo.id}]]);" class="post__apply" style="width:100%"><span>我的发布需求</span></a>
+					<a href="#" th:onclick="getName2([[${session.userInfo.id}]]);" class="post__apply" style="width:100%"><span>我的申请需求</span></a>
+					<a href="#" th:onclick="getName3([[${session.userInfo.id}]]);" class="post__apply" style="width:100%"><span>账户交易记录</span></a>
+				</div>
+				<!-- end sidebox -->
+			</div>			</div>
+	</div>
+</main>
+<!-- end main content -->
+
+<!-- footer -->
+<footer class="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="footer__content">
+					<span class="footer__copyright">© 2021 招聘会服务管理系统</span>
+
+					<button class="footer__back" type="button">
+						<i class="icon ion-ios-arrow-round-up"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- end footer -->
+
+<!-- JS -->
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/wNumb.js"></script>
+<script src="js/nouislider.min.js"></script>
+<script src="js/select2.min.js"></script>
+<script src="js/jquery.mousewheel.min.js"></script>
+<script src="js/jquery.mCustomScrollbar.min.js"></script>
+<script src="js/main.js"></script>
+<script src="/layui/layui.all.js"></script>
+<script src="/js/core.util.js"></script>
+<script>
+	var upload = layui.upload;
+	//执行实例
+	var uploadInst = upload.render({
+		elem: '#upload' //绑定元素
+		,url: '/file/upload'//上传接口
+		,done: function(res){
+			console.log(res)
+			$("#imgUrl").val(res.data.src);
+		}
+		,error: function(){
+			//请求异常回调
+		}
+	});
+
+	function sub(){
+		var username = $("#username").val().trim();
+		var password = $("#password").val().trim();
+		var age = $("#age").val().trim();
+		var sex = $("#sex").val().trim();
+		if(username == '' || password == '' || age == '' || sex == ''){
+			layer.alert('请把信息填写完整！',{icon: 5});
+			return;
+		}
+		var person = new Object();
+		person.username = username;
+		person.password = password;
+		person.age = age;
+		person.sex = sex;
+		$.ajax({
+			type: "POST",
+			url:"/editUser",
+			data:JSON.stringify(person),
+			contentType: 'application/json; charset=UTF-8',
+			dataType: "json",
+			success: function(data) {
+				if(data.code==0){
+					layer.alert('修改成功',{icon: 6});
+					setTimeout(function(){
+						location.reload();
+					}, 1000);
+				}else{
+					layer.alert('修改失败',{icon: 6});
+				}
+			}
+		});
+	}
+	function getName1(id){
+		location.href="myXuqiu?id="+id;
+	}
+	function getName2(id){
+		location.href="myShenqing?id="+id;
+	}
+	function getName3(id){
+		location.href="myJilu?id="+id;
+	}
+</script>
+</body>
+</html>

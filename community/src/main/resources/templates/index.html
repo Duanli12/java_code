@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+<link rel="stylesheet" href="css/bootstrap-grid.min.css">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/nouislider.min.css">
+<link rel="stylesheet" href="css/select2.min.css">
+<link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" href="css/ionicons.min.css">
+<link rel="stylesheet" href="css/main.css">
+<link href="css/camroll_slider.css" rel="stylesheet">
+<!-- Favicons -->
+<link rel="icon" type="image/png" href="icon/favicon-32x32.png"
+	sizes="32x32">
+<link rel="apple-touch-icon" href="icon/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="72x72"
+	href="icon/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114"
+	href="icon/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="144x144"
+	href="icon/apple-touch-icon-144x144.png">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="Dmitry Volkov">
+<title>社区居民网上互助银行</title>
+<style type="text/css">
+.nav-tabs {
+	background-color: #fbfbfb;
+	line-height: 42px;
+	height: 42px;
+	border-bottom: 1px solid #EAEAEA;
+}
+
+.nav-tabs>li>a {
+	outline: medium none;
+	color: #777;
+	margin-right: 0px;
+	border: 1px solid transparent;
+	border-radius: 0;
+	border-right: 1px solid #DDD !important;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover
+	{
+	color: #3399CC !important;
+}
+
+.widget {
+	clear: both;
+	position: relative;
+	margin-bottom: 15px;
+	background-color: #fff;
+	border-radius: 4px;
+	border: 1px solid #eaeaea;
+	overflow: hidden;
+}
+
+.widget h3 {
+	font-size: 18px;
+	color: #666;
+	border-bottom: 1px solid #eaeaea;
+	background-color: #fbfbfb;
+	margin: 0;
+	padding: 11px 15px 10px;
+	cursor: default;
+}
+
+.widget h3:hover {
+	cursor: pointer;
+	color: #F73B3B;
+}
+
+.widget-tabs .tab-content {
+	padding: 15px;
+}
+
+.widget-tabs .tab-content li {
+	margin-bottom: 12px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-size: 12px;
+}
+
+.widget-tabs .tab-content li time {
+	float: right;
+	color: #BBB;
+	margin-left: 10px;
+}
+
+.widget-tabs .tab-content li a {
+	max-width: 280px;
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: #999;
+}
+
+.widget-tabs .tab-content li a:hover {
+	color: #3399CC;
+}
+
+.widget-tabs .tab-content .centre h4 {
+	text-align: center;
+	font-size: 20px;
+	line-height: 20px;
+	margin: 25px 0;
+}
+
+.widget-tabs .tab-content .centre p {
+	text-align: center;
+}
+
+.widget-tabs .tab-content .contact h2 {
+	text-align: center;
+	font-size: 20px;
+	line-height: 40px;
+	margin: 20px 0;
+	font-family: 'TaurusNormal';
+}
+
+.widget-tabs .tab-content .contact a {
+	color: #444;
+}
+
+.widget-tabs .tab-content .contact a:hover {
+	color: #3399CC;
+}
+
+.sidebox__user {
+	margin-bottom: 0px
+}
+
+.sidebox__user>.sidebox__user-title {
+	margin-top: 12px
+}
+
+.sidebox__user>.sidebox__user-title>h5>a {
+	font-size: 22px
+}
+
+#my-slider {
+	width: 100%;
+	height: 404px;
+	color: white;
+}
+
+@media ( max-width : 640px) {
+	#my-slider .crs-bar-roll-current {
+		width: 38px;
+		height: 38px;
+	}
+	#my-slider .crs-bar-roll-item {
+		width: 30px;
+		height: 30px;
+	}
+}
+</style>
+} }
+</head>
+
+<body>
+	<!-- header -->
+	<header class="header">
+		<div class="container">
+			<div class="row">
+				<div class="col-7 col-md-9 col-lg-8 col-xl-9">
+					<div class="header__content">
+						<!-- header menu btn -->
+						<button class="header__btn" type="button">
+							<span></span> <span></span> <span></span>
+						</button>
+						<!-- end header menu btn -->
+
+
+
+						<!-- header nav -->
+						<ul class="header__nav">
+							<!-- dropdown -->
+							<li class="header__nav-item"><a href="frontIndex"
+								class="header__nav-link">网站首页</a></li>
+							<!-- end dropdown -->
+
+							<!-- dropdown -->
+							<li class="header__nav-item"><a
+								class="dropdown-toggle header__nav-link" href="pingtai">平台信息</a>
+							</li>
+							<!-- end dropdown -->
+
+							<!-- dropdown -->
+							<li class="header__nav-item"><a
+								class="dropdown-toggle header__nav-link" href="jianyi">建议意见箱</a>
+							</li>
+							<!-- end dropdown -->
+
+							<!-- dropdown -->
+							<li class="header__nav-item"><a
+								class="dropdown-toggle header__nav-link" href="tongzhi">通知公告</a>
+							</li>
+							<!-- end dropdown -->
+
+							<!-- dropdown -->
+							<li class="header__nav-item"><a
+								class="dropdown-toggle header__nav-link" href="aboutUs">用户操作指南</a>
+							</li>
+							<!-- end dropdown -->
+
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-5 col-md-3 col-lg-4 col-xl-3">
+					<div class="header__content header__content--end">
+						<li class="header__nav-item" th:if="${session.userInfo} == null"><a
+							class="dropdown-toggle header__nav-link" href="signin.html">登录/注册</a>
+						</li>
+
+
+						<div class="header__profile" th:if="${session.userInfo} != null">
+							<a class="dropdown-toggle header__profile-btn" href="#"
+								role="button" id="dropdownMenuProfile" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false"> <span
+								th:text="${'您好！'+session.userInfo.username}">John Doe</span>
+							</a>
+
+							<ul
+								class="dropdown-menu dropdown-menu-right header__dropdown-menu header__dropdown-menu--right"
+								aria-labelledby="dropdownMenuProfile">
+								<li><a href="profile.html"><i
+										class="icon ion-ios-settings"></i> 个人信息</a></li>
+								<li><a  onclick="zengsong()"><i
+										class="icon ion-ios-settings"></i> 赠送虚拟货币</a></li>
+								<li><a href="xuqiu.html"><i
+										class="icon ion-ios-settings"></i> 发布需求</a></li>
+								<li><a href="/loginout"><i class="icon ion-ios-exit"></i>
+										退出</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- end header -->
+
+	<!-- main content -->
+	<main class="main">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-md-5 col-lg-4 col-xl-3">
+
+
+					<!-- sidebox -->
+					<div class="sidebox">
+						<h4 class="sidebox__title">服务分类</h4>
+						<div class="sidebox__content">
+
+							<div class="sidebox__user" th:each="user : ${fenleiList}">
+								<a href="#" class="sidebox__user-img"> <img
+									src="img/tab1on.png" alt="">
+								</a>
+								<div class="sidebox__user-title">
+									<h5>
+										<a th:href="${'frontIndex?queryParam='+user.keyname}" th:text="${user.id}"></a>
+									</h5>
+								</div>
+								<!--<button class="sidebox__user-btn" type="button">
+									<i class="icon ion-ios-play"></i>
+								</button>-->
+							</div>
+						</div>
+					</div>
+					<!-- end sidebox -->
+				</div>
+
+				<div class="col-12 col-md-7 col-lg-8 col-xl-6">
+
+					<div class="post">
+						<!-- slider -->
+						<div id="my-slider" class="crs-wrap">
+							<div class="crs-screen">
+								<div class="crs-screen-roll">
+									<div class="crs-screen-item"
+										style="background-image: url('img/1.jpg')"></div>
+									<div class="crs-screen-item"
+										style="background-image: url('img/2.jpg')"></div>
+									<div class="crs-screen-item"
+										style="background-image: url('img/3.jpg')"></div>
+
+								</div>
+							</div>
+							<div class="crs-bar">
+								<div class="crs-bar-roll-current"></div>
+								<div class="crs-bar-roll-wrap">
+									<div class="crs-bar-roll">
+										<div class="crs-bar-roll-item"
+											style="background-image: url('img/1.jpg')"></div>
+										<div class="crs-bar-roll-item"
+											style="background-image: url('img/2.jpg')"></div>
+										<div class="crs-bar-roll-item"
+											style="background-image: url('img/3.jpg')"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="sidebox" style="width: 100%">
+						<div class="widget widget-tabs" style="width: 100%">
+							<ul class="nav nav-tabs" role="tablist" style="width: 100%">
+								<li role="presentation"><a href="#notice"
+														   aria-controls="#notice" role="tab" data-toggle="tab">最新需求</a></li>
+								<li role="presentation"><a href="#contact1"
+									aria-controls="contact" role="tab" data-toggle="tab">服务动态</a></li>
+							</ul>
+							<div class="tab-content" style="width: 100%">
+								<div role="tabpanel" class="tab-pane contact active" id="notice">
+									<table class="table">
+										<thead>
+											<tr>
+												<th>需求标题</th>
+												<th>发布人</th>
+												<th>发布时间</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="user : ${list}">
+												<td th:text="${user.title}"
+													th:onclick="getName([[${user.id}]]);"></td>
+												<td th:text="${user.fabutaker}"></td>
+												<td
+													th:text="${#dates.format(user.createtime,'yyyy-MM-dd HH:mm:ss')}"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div role="tabpanel" class="tab-pane contact" id="contact">
+									<table class="table">
+										<thead>
+											<tr>
+												<th>活动内容</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="user : ${ggList}">
+												<td th:utext="${user.title}"
+													th:onclick="toGG([[${user.id}]]);">Tanmay</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div role="tabpanel" class="tab-pane contact" id="contact1">
+									<table class="table">
+										<thead>
+											<tr>
+												<th>服务标题</th>
+												<th>发布时间</th>
+												<th>发布人</th>
+												<th>承接人</th>
+												<th>服务状态</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="user : ${list}">
+												<td th:text="${user.title}"></td>
+												<td
+													th:text="${#dates.format(user.createtime,'yyyy-MM-dd HH:mm:ss')}"></td>
+												<td th:text="${user.fabutaker}"></td>
+												<td th:text="${user.undertaker}"></td>
+												<td th:switch="${user.status}"><span
+													style="color: red;" th:case="3">需求已被接</span> <span
+													style="color: red;" th:case="4">需求已完成</span> <span
+													th:case="*">需求未被接</span></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="col-12 col-md-5 col-lg-4 col-xl-3">
+					<!-- user -->
+					<div class="user">
+						<div class="user__title" style="padding: 20px">
+							<h2>平台数据</h2>
+						</div>
+						<ul class="user__stats">
+							<li>
+								<p>拥有会员</p> <span th:text="${userCount}"></span>
+							</li>
+							<li>
+								<p>需求总数</p> <span th:text="${xqCount}"></span>
+							</li>
+							<li>
+								<p>已完成需求</p> <span th:text="${xqCountOK}"></span>
+							</li>
+						</ul>
+					</div>
+					<!-- end user -->
+
+					<!-- sidebox -->
+					<div class="sidebox sidebox--desk"
+						th:if="${session.userInfo} != null">
+						<div class="user__head">
+							<div class="user__img">
+								<img th:src="${session.userInfo.img}" alt="">
+							</div>
+						</div>
+						<div class="user__title">
+							<h2 th:text="${session.userInfo.username}">姓名</h2>
+						</div>
+						<ul class="user__stats">
+							<li>
+								<p>年龄</p> <span th:text="${session.userInfo.age}"></span>
+							</li>
+							<li>
+								<p>性别</p> <span th:text="${session.userInfo.sex}"></span>
+							</li>
+						</ul>
+						<ul class="user__stats">
+							<li style="margin-left: 25%">
+								<p>账户余额</p> <span th:text="${session.userInfo.money}"></span>
+							</li>
+						</ul>
+					</div>
+					<!-- end sidebox -->
+
+
+				</div>
+			</div>
+		</div>
+	</main>
+	<!-- end main content -->
+
+	<!-- footer -->
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="footer__content">
+						<span class="footer__copyright">© 2021 社区居民网上互助银行</span>
+
+						<button class="footer__back" type="button">
+							<i class="icon ion-ios-arrow-round-up"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- end footer -->
+	<div style="width: 80%; height: 50%; display: none; padding-top: 5px;"
+		id="inputDiv">
+		<form action="#" class="form">
+			<div class="row">
+				<div class="col-12"></div>
+				<input th:if="${session.userInfo} != null" hidden name="userid"
+					th:value="${session.userInfo.id}">
+				<div class="col-12">
+					<div class="form__group">
+						<label for="description" class="form__label">充值时间货币数:</label> <input
+							type="number" name="mon" id="mon" class="form__input"
+							placeholder="充值时间货币数" />
+					</div>
+				</div>
+
+				<div class="col-12">
+					<button class="form__btn" type="button" onclick="toudi()">
+						<span>确定</span>
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div style="width: 80%; height: 50%; display: none; padding-top: 5px;"
+		id="zengsong">
+		<form action="#" class="form">
+			<div class="row">
+				<div class="col-12"></div>
+				<div class="col-12">
+					<div class="form__group">
+						<label for="name" class="form__label">选择用户:</label>
+						<div class="form__select-wrap">
+							<select name="zsUser" id="zsUser" class="form__select">
+								<option th:each="car,userStat:${userList}" th:value="${car.id}" th:text="${car.username}"></option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="form__group">
+						<label for="description" class="form__label">输入时间货币数:</label> <input
+							type="number" name="zsMoney" id="zsMoney" class="form__input"
+							placeholder="输入时间货币数" />
+					</div>
+				</div>
+
+				<div class="col-12">
+					<button class="form__btn" type="button" onclick="subZs()">
+						<span>确定</span>
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<!-- JS -->
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/wNumb.js"></script>
+	<script src="js/nouislider.min.js"></script>
+	<script src="js/select2.min.js"></script>
+	<script src="js/jquery.mousewheel.min.js"></script>
+	<script src="js/jquery.mCustomScrollbar.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/camroll_slider.js"></script>
+	<script src="/layui/layui.all.js"></script>
+	<script src="/js/core.util.js"></script>
+	<script>
+		$("#my-slider").camRollSlider();
+	</script>
+	<script>
+	
+	function upload(){
+	layer.open({
+		type: 1,//层的类型。0：信息框（默认），1：页面层，2：iframe层，3：加载层，4：tips层。
+		area: ['50%', '50%'],//控制层宽高 [宽度, 高度]
+	  	content: $("#inputDiv"),
+	  	offset:['100px','300px'],
+	  	title:'新增',
+	  	scrollbar: false
+	});
+}
+	
+    function sub(){
+    var phone = $("#phone").val().trim();
+    var password = $("#password").val().trim();
+  
+    var person = new Object();
+    person.phone = phone;
+    person.password = password;
+    
+	$.ajax({
+	       type: "POST",
+	       url:"/front/login",
+	       data:JSON.stringify(person),
+            contentType: 'application/json; charset=UTF-8',
+            dataType: "json",
+	       success: function(data) {
+	       console.log(data)
+	       	 if(data.code==0){
+	       		layer.alert('登录成功',{icon: 6}); 
+	       		setTimeout(function(){
+			        		  location.href="/front/index";
+				       		}, 1000);
+	       	 }else{
+	       		layer.alert('账号或密码错误',{icon: 6}); 
+	       	 }
+	       }
+	   });
+}
+
+function cz(){
+	layer.open({
+		type: 1,//层的类型。0：信息框（默认），1：页面层，2：iframe层，3：加载层，4：tips层。
+		area: ['50%', '70%'],//控制层宽高 [宽度, 高度]
+	  	content: $("#inputDiv"),
+	  	offset:['100px','300px'],
+	  	title:'充值',
+	  	scrollbar: false
+	});
+}
+function zengsong(){
+	layer.open({
+		type: 1,//层的类型。0：信息框（默认），1：页面层，2：iframe层，3：加载层，4：tips层。
+		area: ['50%', '70%'],//控制层宽高 [宽度, 高度]
+	  	content: $("#zengsong"),
+	  	offset:['100px','300px'],
+	  	title:'赠送',
+	  	scrollbar: false
+	});
+}
+
+function toudi(){
+	var mon = $("#mon").val();
+    var person = new Object();
+    person.money = mon;
+	$.ajax({
+	       type: "POST",
+	       url:"/cz",
+	       data:JSON.stringify(person),
+            contentType: 'application/json; charset=UTF-8',
+            dataType: "json",
+	       success: function(data) {
+	       console.log(data)
+	       	 if(data.code==0){
+	       		layer.alert('充值成功',{icon: 6}); 
+	       		setTimeout(function(){
+			        		   location.reload();
+				       		}, 1000);
+	       	 }else{
+	       		layer.alert(data.msg,{icon: 6}); 
+	       	 }
+	       }
+	   });
+}
+function subZs(){
+	var zsUser = $("#zsUser").val();
+	var zsMoney = $("#zsMoney").val();
+	
+	if(zsMoney<=0){
+	layer.alert('请输入大于0的数值',{icon: 5}); 
+	return;
+	}
+	
+    var person = new Object();
+    person.money = zsMoney;
+    person.id = zsUser;
+    
+	$.ajax({
+	       type: "POST",
+	       url:"/subZs",
+	       data:JSON.stringify(person),
+            contentType: 'application/json; charset=UTF-8',
+            dataType: "json",
+	       success: function(data) {
+	       console.log(data)
+	       	 if(data.code==0){
+	       		layer.alert('赠送成功',{icon: 6}); 
+	       		setTimeout(function(){
+			        		   location.reload();
+				       		}, 1000);
+	       	 }else{
+	       		layer.alert(data.msg,{icon: 6}); 
+	       	 }
+	       }
+	   });
+}
+
+function getName(id){
+	location.href="xuqiuAccpet?id="+id;
+}
+function toGG(id){
+location.href="gonggao?id="+id;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <!--加载jdbc.properties里面的配置信息-->
+    <bean id="placeholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:config/jdbc.properties"/>
+    </bean>
+
+    <!--配置数据源,管理数据库的连接 dbcp,druid,c3p0-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+
+        <!-- 连接池的参数配置-->
+        <property name="maxActive" value="20"/>
+    </bean>
+    <!---->
+    <bean id="sessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 给mybatis配置数据源，就是前面配置的数据源bean-->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 配置mybatis映射xml文件的地址-->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        <!--配置mybatis基础配置文件所在位置-->
+        <property name="configLocation" value="classpath:config/mybatis-config.xml"/>
+        <property name="plugins" >
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties" >
+                        <value>
+                            <!-- 针对mysql的分页-->
+                            helperDialect=mysql
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+    </bean>
+    <!--将映射dao的实现对象加入IOC容器管理，才能被依赖-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sessionFactoryBean"/>
+        <!--扫描basePackage下面的映射接口文件，以把mybatis的映射实现对象加入IOC容器-->
+        <property name="basePackage" value="com.hqyj.dl.dao"/>
+    </bean>
+
+    <!-- spring的事物管理-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!-- 指定数据源为前面配置的那个数据源-->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!-- 配置注解驱动-->
+    <tx:annotation-driven/>
+</beans>

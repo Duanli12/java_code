@@ -1,0 +1,19 @@
+MVC模式
+M:model   领域模型类（javabean）
+V:view     视图层
+C：controller 控制层
+
+详细说明：
+controller：servlet 只做跳转页面（可以存储一些数据在req,session里）
+model：数据库对应的表的类  例：user表对应一个User类
+service：写业务逻辑
+dao:完成数据库的相关操作（增删改查的sql语句）
+
+
+java发展到现在-->Java变成了面向接口编程    service dao层都封装成接口来使用
+dao里放接口 dao.impl包里写实现
+
+
+整个后台的数据流向情况：
+客户端发送请求-->controller（servlet）-->调用业务层service-->调用dao层，并按照顺序返回业务层，
+再到控制层，控制层返回数据并相应给客户端

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="76ba949f-e511-4f4f-9176-9e7dc45a4af2" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="JUnit4 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\Maven" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="D:\Java\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1hTsU0JAl7Bky2f8pQmBMgV2QoC" />
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="last_opened_file_path" value="E:/folder/java200701/框架阶段/项目/Mybatis-200701-14日代码注释版" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.28386453" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.dl" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.UserDaoTest.update">
+    <configuration name="UserDaoTest.add" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MavenTest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dl" />
+      <option name="MAIN_CLASS_NAME" value="com.dl.UserDaoTest" />
+      <option name="METHOD_NAME" value="add" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserDaoTest.delete" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MavenTest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dl" />
+      <option name="MAIN_CLASS_NAME" value="com.dl.UserDaoTest" />
+      <option name="METHOD_NAME" value="delete" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserDaoTest.update" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MavenTest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dl" />
+      <option name="MAIN_CLASS_NAME" value="com.dl.UserDaoTest" />
+      <option name="METHOD_NAME" value="update" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserTest.getId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MavenTest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dl" />
+      <option name="MAIN_CLASS_NAME" value="com.dl.UserTest" />
+      <option name="METHOD_NAME" value="getId" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.UserDaoTest.update" />
+        <item itemvalue="JUnit.UserDaoTest.delete" />
+        <item itemvalue="JUnit.UserDaoTest.add" />
+        <item itemvalue="JUnit.UserTest.getId" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="76ba949f-e511-4f4f-9176-9e7dc45a4af2" name="Default Changelist" comment="" />
+      <created>1600046427202</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1600046427202</updated>
+      <workItem from="1600046432501" duration="16915000" />
+      <workItem from="1600079459392" duration="4846000" />
+      <workItem from="1600133067923" duration="788000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="406" y="156" key="#Project_Structure" timestamp="1600046567782">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="406" y="156" key="#Project_Structure/0.0.1536.864@0.0.1536.864" timestamp="1600046567782" />
+    <state x="890" y="284" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600056334327">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="890" y="284" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.864@0.0.1536.864" timestamp="1600056334327" />
+    <state x="827" y="169" key="#com.intellij.ide.util.MemberChooser" timestamp="1600056922675">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="827" y="169" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1600056922675" />
+    <state x="549" y="186" key="FileChooserDialogImpl" timestamp="1600133260682">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="549" y="186" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1600133260682" />
+    <state width="1492" height="2" key="GridCell.Tab.0.bottom" timestamp="1600078362129">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1492" height="2" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1600078362129" />
+    <state width="1492" height="2" key="GridCell.Tab.0.center" timestamp="1600078362129">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1492" height="2" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1600078362129" />
+    <state width="1492" height="2" key="GridCell.Tab.0.left" timestamp="1600078362129">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1492" height="2" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1600078362129" />
+    <state width="1492" height="2" key="GridCell.Tab.0.right" timestamp="1600078362129">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1492" height="2" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1600078362129" />
+    <state x="273" y="93" width="996" height="707" key="SettingsEditor" timestamp="1600079857297">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="273" y="93" width="996" height="707" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1600079857297" />
+    <state x="793" y="187" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1600062195049">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="793" y="187" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.864@0.0.1536.864" timestamp="1600062195049" />
+    <state x="178" y="0" key="new project wizard" timestamp="1600083672314">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="178" y="0" key="new project wizard/0.0.1536.864@0.0.1536.864" timestamp="1600083672314" />
+  </component>
+</project>

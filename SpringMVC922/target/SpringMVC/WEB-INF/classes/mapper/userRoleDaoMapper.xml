@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--映射配置文件定义：一个映射配置文件对应一个java接口文件（由namespace指明），
+在这个接口文件定义对数据库的操作-->
+<mapper namespace="com.hqyj.dl.dao.UserRoleDao">
+    <insert id="insert" parameterType="com.hqyj.dl.pojo.UserRole">
+        insert into user_role (user_id,role_id) values (#{userId},#{roleId})
+    </insert>
+
+</mapper>

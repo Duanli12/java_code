@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 配置一个凭证匹配器-->
+    <bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+        <!-- 指定一个hash算法：MD5-->
+        <property name="hashAlgorithmName" value="MD5"/>
+        <property name="hashIterations" value="1024"/>
+    </bean>
+
+    <!--把shiroRealm加到IOC容器-->
+    <bean id="myShiroRealm" class="com.hqyj.dl.realm.MyShiroRealm">
+        <!-- 指定凭证匹配器为上面配的那一个-->
+        <property name="credentialsMatcher" ref="credentialsMatcher"/>
+    </bean>
+    <!--配置一个用于web的SecurityManager-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <!--注入自定义的realm依赖-->
+        <property name="realm" ref="myShiroRealm"/>
+    </bean>
+    <!-- id和web.xml的过滤器配置中的filter-name要一致-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <!-- 没有认证过的用户试图访问需要认证的url，将被强制转到改url-->
+        <property name="loginUrl" value="/index.jsp"/>
+        <!-- 没有相关权限的用户试图访问需要对应权限才能访问url，将被强制转到改url上-->
+        <property name="unauthorizedUrl" value="/unauthorized.jsp"/>
+        <!-- 定义shiro url过滤器-->
+        <property name="filterChainDefinitions">
+            <value>
+                <!--根据roles[]的角色来配置能够访问的url-->
+                /shiro/mustAdmin.do = roles[管理员]
+                /shiro/mustNormal.do = roles[普通用户]
+                <!-- 必须要认证通过的用户才能访问-->
+                /shiro/mustAuthc.do = authc
+                <!-- 必须有perms[x]的权限才能访问-->
+                /shiro/mustWritePermission.do=perms[write]
+            </value>
+        </property>
+    </bean>
+
+
+</beans>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--    加载properties，方便下面使用-->
+    <properties resource="jdbc.properties"></properties>
+    <!--    定义环境-->
+    <environments default="develop">
+        <environment id="develop">
+            <!--            定义事务管理器-->
+            <transactionManager type="JDBC"></transactionManager>
+            <!--            定义数据源，用到前面的properties变量-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--    关联各个映射文件-->
+    <mappers>
+        <mapper resource="mapper/userDaoMapper.xml" />
+        <mapper resource="mapper/RoleDaoMapper.xml" />
+        <mapper resource="mapper/userRoleDaoMapper.xml" />
+        <mapper resource="mapper/RolePermissionDaoMapper.xml" />
+
+    </mappers>
+</configuration>

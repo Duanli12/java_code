@@ -1,0 +1,20 @@
+# 开发环境配置
+spring:
+  thymeleaf:
+    cache: false
+  datasource:
+    dynamic:
+      primary: master #设置默认的数据源或者数据源组,默认值即为master
+      datasource:
+        master:
+          username: root
+          password: 120401dl
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/community?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2b8
+
+file:
+  #文件上传目录 绝对路径 末尾请加 /
+  path: E:/files/ #windows
+  #path: /data/files/ #linux
+  #文件预览、下载的url, 末尾请勿加 /
+  url: http://localhost:8080/files

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="child" class="com.dl.Child">
+        <property name="name" value="小明"/>
+        <property name="sex" value="nan"/>
+        <property name="age" value="10"/>
+    </bean>
+    <bean id="father" class="com.dl.Father">
+        <property name="name" value="小明的father"/>
+        <property name="sex" value="nan"/>
+        <property name="age" value="35"/>
+    </bean>
+    <bean id="mother" class="com.dl.Mother">
+        <property name="name" value="小明的mother"/>
+        <property name="sex" value="nv"/>
+        <property name="age" value="32"/>
+    </bean>
+</beans>

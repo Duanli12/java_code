@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dl.dao.RoleDao">
+<resultMap id="roleResultMap" type="com.dl.pojo.Role">
+    <id column="role_id" property="roleId" />
+    <result column="name" property="name" />
+    <result column="state" property="state"/>
+</resultMap>
+    <select id="queryAll" resultMap="roleResultMap">
+        select * from role;
+     </select>
+
+    <insert id="insertByRole" parameterType="com.dl.pojo.Role">
+        insert into role(name,state) values (#{name},#{state})
+    </insert>
+
+
+    <update id="updateByRole" parameterType="com.dl.pojo.Role">
+         update role set name =#{name},state=#{state} where role_id=#{roleId}
+     </update>
+
+
+    <delete id="deleteByRole" parameterType="com.dl.pojo.Role">
+        delete from role where role_id = #{roleId}
+    </delete>
+    
+    <update id="deleteByRoleIds" parameterType="com.dl.pojo.Role">
+        update role set state = 0 where role_id in
+        <foreach collection="roleIds" open="(" close=")" separator="," item="roleId">
+            #{roleId}
+        </foreach>
+    </update>
+</mapper>

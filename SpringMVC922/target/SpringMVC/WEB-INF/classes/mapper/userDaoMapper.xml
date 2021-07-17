@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--映射配置文件定义：一个映射配置文件对应一个java接口文件（由namespace指明），
+在这个接口文件定义对数据库的操作-->
+<mapper namespace="com.hqyj.dl.dao.UserDao">
+<!--    在这定义映射语句:一个映射语句对应接口文件里的一个方法，-->
+<!--    也就是我们期望对数据库做的增删改查的具体操作
+       id指明对应的接口文件中定义的方法 resultType指明返回数据的Java类型-->
+<resultMap id="userResultMap" type="com.hqyj.dl.pojo.User">
+    <id column="user_id" property="userId" />
+    <result column="name" property="name" />
+    <result column="sex" property="sex"/>
+    <result column="address" property="address"/>
+    <result column="phone" property="phone"/>
+    <result column="email" property="email"/>
+    <result column="username" property="username"/>
+    <result column="password" property="password"/>
+    <result column="deleted" property="deleted"/>
+    <association property="role" javaType="com.hqyj.dl.pojo.Role">
+        <id property="roleId" column="role_id"/>
+        <result property="name" column="name"/>
+        <result property="state" column="state"/>
+    </association>
+    <collection property="roles" ofType="com.hqyj.dl.pojo.Role">
+        <id property="roleId" column="role_id"/>
+        <result property="name" column="name"/>
+        <result property="state" column="state"/>
+    </collection>
+</resultMap>
+    <!-- sql语句替换-->
+    <sql id="baseUserColumn">
+        u.user_id,u.name,u.sex,u.address,u.phone,u.email,u.username,u.password,u.deleted,r.role_id,r.name rname,r.state
+    </sql>
+    <select id="queryAll" resultType="com.hqyj.dl.pojo.User">
+      <!-- select <include refid="baseUserColumn"/> from user u,user_role ur,role r
+       where u.user_id = ur.user_id
+       and ur.role_id = r.role_id-->
+        select user_id userId,name, sex, address, phone, email, username, password, deleted
+         from user where deleted = 0
+     </select>
+
+    <select id="queryById" resultType="com.hqyj.dl.pojo.User">
+        select user_id userId,name,sex,address,phone,email,username,password,deleted
+        from user where user_id = #{userId}
+    </select>
+
+
+    <insert id="insertByUser" parameterType="com.hqyj.dl.pojo.User" useGeneratedKeys="true" keyColumn="user_id" keyProperty="userId">
+        insert into user (name,sex,address,phone,email,username,password,deleted)
+        values (#{name},#{sex},#{address},#{phone},#{email},#{username},#{password},#{deleted})
+    </insert>
+
+
+    <update id="updateByUser" parameterType="com.hqyj.dl.pojo.User">
+        update user
+        <set>
+            <if test="name !=null">
+                name = #{name},
+            </if>
+            <if test="sex !=null">
+                sex = #{sex},
+            </if>
+            <if test="address !=null">
+                address = #{address},
+            </if>
+            <if test="phone !=null">
+                phone = #{phone},
+            </if>
+            <if test="email !=null">
+                email = #{email},
+            </if>
+            <if test="username !=null">
+                username = #{username},
+            </if>
+            <if test="password !=null">
+                password = #{password},
+            </if>
+        </set>
+        <where>
+             user_id=#{userId}
+           <!--  <if test="true">
+                 and deleted =0
+             </if>-->
+        </where>
+    </update>
+
+
+    <!-- 定义逻辑删除的映射语句-->
+    <update id="deleteByUser" parameterType="com.hqyj.dl.pojo.User">
+        update user set deleted = 1 where user_id = #{userId}
+    </update>
+    <!--  定义物理删除User的映射语句-->
+    <delete id="deleteById" parameterType="com.hqyj.dl.pojo.User">
+        delete from  user where user_id = #{userId}
+    </delete>
+
+    <!-- 批量逻辑删除用户-->
+    <update id="deleteByIds" parameterType="java.lang.Integer">
+        update  user set deleted=1 where user_id in
+        <foreach collection="userIds" open="(" close=")" separator="," item="userId">
+            #{userId}
+        </foreach>
+
+    </update>
+ <!--模糊查询 -->
+    <select id="queryByColumn" resultMap="userResultMap">
+        <bind name="bindValue" value="'%'+columnValue+'%'"/>
+        select <include refid="baseUserColumn"/>
+        from user u join user_role ur on u.user_id = ur.user_id
+        join role r on ur.role_id = r.role_id
+        where ${column} like #{bindValue}
+    </select>
+
+    <select id="queryByUsername" resultMap="userResultMap">
+        select <include refid="baseUserColumn"/>
+        from user u left join user_role ur on u.user_id = ur.user_id
+        left join role r on ur.role_id = r.role_id
+        where u.username = #{username}
+
+    </select>
+
+
+    <select id="findByAddressUser" resultType="com.hqyj.dl.pojo.User">
+        <bind name="bindValue" value="'%'+columnValue+'%'"/>
+        select user_id userId,name, sex, address, phone, email, username, password, deleted
+        from user where ${column} like #{bindValue}
+    </select>
+
+    <select id="queryByMultiConditions" resultMap="userResultMap">
+        <if test="userName != null and userName != ''">
+            <bind name="userNameBind" value="'%'+userName+'%'"/>
+        </if>
+        <if test="userPhone != null and userPhone !=''">
+             <bind name="userPhoneBind" value="'%'+userPhone+'%'"/>
+        </if>
+        <if test="userRole != null and userRole !=''">
+            <bind name="userRoleBind" value="'%'+userRole+'%'"/>
+        </if>
+        select <include refid="baseUserColumn"/> from
+        user u left join user_role ur on u.user_id = ur.user_id
+        join role r on ur.role_id=r.role_id
+        <where>
+            <if test="userName != null and userName != ''">
+                u.name like #{userNameBind}
+            </if>
+            <if test="userPhone != null and userPhone !=''">
+                and u.phone like #{userPhoneBind}
+            </if>
+            <if test="userRole != null and userRole !=''">
+               and r.name like #{userRoleBind}
+            </if>
+        </where>
+    </select>
+</mapper>

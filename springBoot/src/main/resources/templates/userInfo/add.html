@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/font.css">
+    <link rel="stylesheet" href="/css/xadmin.css">
+    <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/js/xadmin.js"></script>
+</head>
+<body>
+<div class="x-body">
+    <form class="layui-form">
+        <input type="hidden" name="url" class="image">
+        <div class="layui-form-item">
+            <label class="layui-form-label ">照片:</label>
+            <div class="layui-upload">
+                <button type="button" class="layui-btn" id="test1">上传头像</button>
+
+                <div class="layui-upload-list" style="margin-left: 100px">
+                    <img class="layui-upload-img" id="demo1" width="200" height="100" >
+                    <p id="demoText"></p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="userName" class="layui-form-label">
+                <span class="x-red">*</span>登录名
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="userName" name="userName" required="" lay-verify="required"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="x-red">*</span>将会成为您唯一的登入名
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="tel" class="layui-form-label">
+                <span class="x-red">*</span>手机
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="tel" name="tel" required="" lay-verify="phone"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="x-red">*</span>将会成为您唯一的登入名
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="email" class="layui-form-label">
+                <span class="x-red">*</span>邮箱
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" id="email" name="email" required="" lay-verify="email"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="x-red">*</span>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span class="x-red">*</span>角色</label>
+            <div class="layui-input-block">
+                <!-- 角色复选框隐藏值-->
+                <input type="hidden" name="roleId" id="roleId">
+                <ul th:each="x:${roleList}" style="float: left">
+                    <li  onclick="getRid()"> <input type="checkbox" name="rName" lay-skin="primary" th:title="${x.rName}" th:value="${x.rId}" ></li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="userPwd" class="layui-form-label">
+                <span class="x-red">*</span>密码
+            </label>
+            <div class="layui-input-inline">
+                <input type="password" id="userPwd" name="userPwd" required="" lay-verify="userPwd"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                6到16个字符
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_repass" class="layui-form-label">
+                <span class="x-red">*</span>确认密码
+            </label>
+            <div class="layui-input-inline">
+                <input type="password" id="L_repass" name="repass" required="" lay-verify="repass"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="L_repass" class="layui-form-label">
+            </label>
+            <button  class="layui-btn" lay-filter="add" lay-submit="">
+                保存
+            </button>
+        </div>
+    </form>
+</div>
+</body>
+
+
+</html>
+<script>
+    layui.use(['form','layer'], function(){
+        $ = layui.jquery;
+        var form = layui.form
+            ,layer = layui.layer;
+
+        //自定义验证规则
+        form.verify({
+            userName: function(value){
+                if(value.length < 5){
+                    return '昵称至少得5个字符啊';
+                }
+            }
+            ,userPwd: [/(.+){6,12}$/, '密码必须6到12位']
+            ,repass: function(value){
+                if($('#userPwd').val()!=$('#L_repass').val()){
+                    return '两次密码不一致';
+                }
+            }
+
+        });
+//新增按钮
+            form.on('submit(add)', function(data){
+
+                console.log(data.field);
+
+                $.ajax({
+                    url:"/userInfo/save/add",
+                    async: false,
+                    type:"POST",
+                    dataType: "json",
+                    data:data.field,
+                    success: function(data){
+
+                        if(data==true){
+                            layer.alert("增加成功", {icon: 6},function () {
+                                // 获得frame索引
+                                var index = parent.layer.getFrameIndex(window.name);
+                                //关闭当前frame
+                                parent.layer.close(index);
+                                //刷新
+                                parent.window.location.replace("/userInfo/list")
+                            });
+                        }else{
+                            layer.msg('增加失败!',{icon: 6,time:1000});
+                        }
+
+                    }
+                })
+
+
+                return false;
+            });
+
+    });
+
+        layui.use('upload', function(){
+        var $ = layui.jquery
+            ,upload = layui.upload;
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '#test1'
+            ,url: '/userInfo/upload/'
+            ,accept:'url'
+            ,size:50000
+            ,before: function(obj){
+                obj.preview(function(index, file, result){
+                    //显示上传图片
+                    $('#demo1').attr('src', result);
+                });
+            }
+            ,done: function(res){
+                //如果上传失败
+                if(res.code > 0){
+                    return layer.msg('上传失败');
+                }
+                //上传成功
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #4cae4c;">上传成功</span>');
+
+                var fileupload = $(".image");
+                //把图片在项目中的路径存入到 属性 class=image的input框中
+                fileupload.attr("value",res.src);
+                console.log(fileupload.attr("value"));
+            }
+            ,error: function(){
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function(){
+                    uploadInst.upload();
+                });
+            }
+        });
+    });
+    //获取选中角色是复选框的值
+    function getRid() {
+        var rId = "";
+        $('input[type=checkbox]:checked').each(function () {
+            rId += $(this).val() + ",";
+        });
+        console.log(rId)
+        $("#roleId").val(rId);
+    }
+</script>

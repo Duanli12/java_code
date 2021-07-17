@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/font.css">
+    <link rel="stylesheet" href="/css/xadmin.css">
+    <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/js/xadmin.js"></script>
+</head>
+<body>
+
+<div class="x-body">
+    <form class="layui-form">
+        <div id="one">
+            <input type="hidden" id="myEmail" th:value="${session.userInfo.userDetail.email}">
+
+            <div class="layui-form-item">
+                <label for="email" class="layui-form-label">
+                    <span class="x-red">*</span>注册邮箱
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="email" name="email" required="" lay-verify="email"
+                           autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">
+                    <span class="x-red">*</span>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="valCode" class="layui-form-label">
+                    <span class="x-red">*</span>验证码
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="valCode" name="valCode" required="" lay-verify="required"
+                           autocomplete="off" class="layui-input" >
+                </div>
+                <div class="layui-form-mid layui-word-aux" id="send">
+                    <button  class="layui-btn" type="button" onclick="validateSuccess()">
+                    发送验证码
+                </button>
+                </div>
+
+            </div>
+
+            <div class="layui-form-item">
+                <label  class="layui-form-label">
+                </label>
+                <button  class="layui-btn" lay-filter="send" lay-submit="" >
+                    确认
+                </button>
+            </div>
+        </div>
+        <div id="two" style="display:none;">
+
+
+            <div class="layui-form-item">
+                <label for="userPwd" class="layui-form-label">
+                    <span class="x-red">*</span>新密码
+                </label>
+                <div class="layui-input-inline">
+                    <input type="password" id="userPwd" name="userPwd" required="" lay-verify="userPwd"
+                           autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">
+                    6到16个字符
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="L_repass" class="layui-form-label">
+                    <span class="x-red">*</span>确认新密码
+                </label>
+                <div class="layui-input-inline">
+                    <input type="password" id="L_repass" name="repass" required="" lay-verify="repass"
+                           autocomplete="off" class="layui-input">
+                </div>
+
+            </div>
+            <div class="layui-form-item">
+                <label  class="layui-form-label">
+                </label>
+                <button  class="layui-btn" lay-filter="add" lay-submit="">
+                    保存
+                </button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+</body>
+</html>
+<script>
+    layui.use(['form','layer'], function(){
+        $ = layui.jquery;
+        var form = layui.form
+            ,layer = layui.layer;
+        //确认，验证验证码是否输入正确
+        form.on('submit(send)', function(data){
+            //获取用户输入的验证码
+            var valCode =$("#valCode").val();
+            //判断邮箱输入是否正确
+            var myEmail = $("#myEmail").val();
+            var email = $("#email").val();
+            if(email==myEmail){
+                $.ajax({
+                    url:"/userInfo/getValCode",
+                    type:"POST",
+                    dataType: "json",
+                    data:{"valCode":valCode},
+                    success: function(dddd){
+                        if(dddd==true){
+                            //隐藏输入邮箱这个div
+                            $("#one").hide();
+                            //显示输入密码这个div
+                            $("#two").show();
+                        }else{
+                            layer.msg("验证码输入错误",{icon: 6,time:1000});
+                        }
+
+                    }
+                })
+            }else{
+                layer.msg("邮箱输入错误",{icon: 6,time:1000});
+            }
+
+        });
+
+    })
+
+    //发送验证码
+    function  validateSuccess(){
+
+        //获取用户的邮箱
+        var email = $("#email").val();
+        //获取登录用户的邮箱
+        var myEmail = $("#myEmail").val();
+        //创建正则表达式对象
+        var reg = new RegExp("\^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$");
+
+        if(reg.test(email)){//判断邮箱验证
+            var s = 4;//时间
+            //开始倒计时
+            var time = setInterval(function () {
+                //禁用发送验证码按钮
+                $("#send").html("<button  class='layui-btn layui-btn-disabled' lay-filter='send'lay-submit=''>"+s+"秒后发送验证码</button>")
+                s--;
+                if(s==0){ //倒计时结束
+                    //清除计时器
+                    clearInterval(time);
+                    //启用发送验证码
+                    $("#send").html("<button  class='layui-btn' lay-filter='send'lay-submit='' onclick='validateSuccess()'>发送验证码</button>")
+                }
+
+            },1000)
+
+            if(myEmail==email){
+                $.ajax({
+                    url:"/userInfo/sendCode",
+                    type:"POST",
+                    dataType: "json",
+                    data:{"email":email},
+                    success: function(dddd){
+                        if(dddd==true){
+                            layer.msg("发送成功",{icon: 6,time:1000});
+                        }else{
+                            layer.msg("发送失败",{icon: 6,time:1000});
+                        }
+
+
+                    }
+                })
+            }else{
+                layer.msg("请输入登录用户的邮箱")
+            }
+
+
+        }else{
+            layer.msg("邮箱输入错误")
+        }
+
+    }
+</script>

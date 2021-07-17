@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hqyj.dao.UserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.hqyj.pojo.UserInfo" >
+    <id column="u_id" property="uId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_pwd" property="userPwd" jdbcType="VARCHAR" />
+    <result column="ud_id" property="udId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    u_id, user_name, user_pwd, ud_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where u_id = #{uId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_info
+    where u_id = #{uId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hqyj.pojo.UserInfo" >
+    insert into user_info (u_id, user_name, user_pwd, 
+      ud_id)
+    values (#{uId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userPwd,jdbcType=VARCHAR}, 
+      #{udId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hqyj.pojo.UserInfo" >
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uId != null" >
+        u_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="userPwd != null" >
+        user_pwd,
+      </if>
+      <if test="udId != null" >
+        ud_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uId != null" >
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null" >
+        #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="udId != null" >
+        #{udId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hqyj.pojo.UserInfo" >
+    update user_info
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null" >
+        user_pwd = #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="udId != null" >
+        ud_id = #{udId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where u_id = #{uId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hqyj.pojo.UserInfo" >
+    update user_info
+    set user_name = #{userName,jdbcType=VARCHAR},
+      user_pwd = #{userPwd,jdbcType=VARCHAR},
+      ud_id = #{udId,jdbcType=INTEGER}
+    where u_id = #{uId,jdbcType=INTEGER}
+  </update>
+</mapper>
